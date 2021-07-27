@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/zanhesl/PeerTube/archive/refs/tags/3.1.7.tar.gz
-SOURCE_SUM=e03797bbce4ebc7f2f594406bc4b41469486da29edf2895532a90f64d7b4ab07
+SOURCE_URL=https://github.com/zanhesl/PeerTube/archive/refs/tags/3.1.8.tar.gz
+SOURCE_SUM=a489bfefdae9b920b15617457354f8e834932e33c2df1f50b2067a829bddb9ed
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=true
