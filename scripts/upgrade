@@ -247,12 +247,21 @@ pushd "$final_path"
 popd
 
 #=================================================
-# INSTALL LDAP PLUGIN
+# INSTALL AUTH PLUGIN
 #=================================================
-ynh_script_progression --message="Installing LDAP plugin..."
+ynh_script_progression --message="Installing Auth plugin..."
 
 pushd "$final_path"
-	NODE_CONFIG_DIR="$final_path/config" NODE_ENV=production npm run plugin:install -- --npm-name peertube-plugin-auth-ldap
+	NODE_CONFIG_DIR="$final_path/config" NODE_ENV=production npm run plugin:install -- --npm-name peertube-plugin-pocketnet-auth
+popd
+
+#=================================================
+# INSTALL INTERFACE PLUGIN
+#=================================================
+ynh_script_progression --message="Installing Auth plugin..."
+
+pushd "$final_path"
+	NODE_CONFIG_DIR="$final_path/config" NODE_ENV=production npm run plugin:install -- --npm-name peertube-plugin-pocketnet
 popd
 
 #=================================================
