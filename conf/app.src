@@ -1,7 +1,7 @@
-SOURCE_URL=https://github.com/Chocobozzz/PeerTube/releases/download/v3.4.1/peertube-v3.4.1.tar.xz
-SOURCE_SUM=dd7357529826beb071a86e6f76bc2eb99b0d6481a71566db1cb2f6cf8a4a6305
+SOURCE_URL=https://github.com/pocketnetteam/bastyon-video/archive/refs/tags/3.4.1-1.tar.gz
+SOURCE_SUM=494a42069e0ccf678c4daebf7a5b33f434ac66817aa65c4b034b694b02db3028
 SOURCE_SUM_PRG=sha256sum
-SOURCE_FORMAT=tar.xz
+SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=true
 SOURCE_FILENAME=
 SOURCE_EXTRACT=true
