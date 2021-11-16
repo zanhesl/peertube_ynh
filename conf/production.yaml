@@ -12,15 +12,15 @@ rates_limit:
   api:
     # 50 attempts in 10 seconds
     window: 10 seconds
-    max: 500
+    max: 50
   login:
     # 15 attempts in 5 min
     window: 5 minutes
-    max: 100
+    max: 15
   signup:
     # 2 attempts in 5 min (only succeeded attempts are taken into account)
     window: 5 minutes
-    max: 100
+    max: 2
   ask_send_email:
     # 3 attempts in 5 min
     window: 5 minutes
@@ -119,7 +119,7 @@ trending:
 # Once you have defined your strategies, choose which instances you want to cache in admin -> manage follows -> following
 redundancy:
   videos:
-    check_interval: '10 seconds' # How often you want to check new videos to cache
+    check_interval: '1 hour' # How often you want to check new videos to cache
     strategies: # Just uncomment strategies you want
 #      -
 #        size: '10GB'
@@ -131,12 +131,12 @@ redundancy:
 #        # Minimum time the video must remain in the cache. Only accept values > 10 hours (to not overload remote instances)
 #        min_lifetime: '48 hours'
 #        strategy: 'trending' # Cache trending videos
-     -
-       size: '10GB'
-       # Minimum time the video must remain in the cache. Only accept values > 10 hours (to not overload remote instances)
-       min_lifetime: '48 hours'
-       strategy: 'recently-added' # Cache recently added videos
-       min_views: 0 # Having at least x views
+#      -
+#        size: '10GB'
+#        # Minimum time the video must remain in the cache. Only accept values > 10 hours (to not overload remote instances)
+#        min_lifetime: '48 hours'
+#        strategy: 'recently-added' # Cache recently added videos
+#        min_views: 10 # Having at least x views
 
 # Other instances that duplicate your content
 remote_redundancy:
@@ -211,11 +211,11 @@ federation:
 
 cache:
   previews:
-    size: 500000 # Max number of previews you want to cache
+    size: 500 # Max number of previews you want to cache
   captions:
-    size: 500000 # Max number of video captions/subtitles you want to cache
+    size: 500 # Max number of video captions/subtitles you want to cache
   torrents:
-    size: 500000 # Max number of video torrents you want to cache
+    size: 500 # Max number of video torrents you want to cache
 
 admin:
   # Used to generate the root user at first startup
@@ -253,9 +253,9 @@ transcoding:
   allow_audio_files: true
 
   # Amount of threads used by ffmpeg for 1 transcoding job
-  threads: 2
+  threads: 1
   # Amount of transcoding jobs to execute in parallel
-  concurrency: 2
+  concurrency: 1
 
   # Choose the transcoding profile
   # New profiles can be added by plugins
@@ -265,9 +265,9 @@ transcoding:
   resolutions: # Only created if the original video has a higher resolution, uses more storage!
     0p: false # audio-only (creates mp4 without video stream, always created when enabled)
     240p: false
-    360p: true
-    480p: true
-    720p: true
+    360p: false
+    480p: false
+    720p: false
     1080p: false
     1440p: false
     2160p: false
@@ -276,7 +276,7 @@ transcoding:
   # If you also enabled the hls format, it will multiply videos storage by 2
   # If disabled, breaks federation with PeerTube instances < 2.1
   webtorrent:
-    enabled: false
+    enabled: true
 
   # /!\ Requires ffmpeg >= 4.1
   # Generate HLS playlists and fragmented MP4 files. Better playback than with WebTorrent:
@@ -285,7 +285,7 @@ transcoding:
   #     * More stable playback (less bugs/infinite loading)
   # If you also enabled the webtorrent format, it will multiply videos storage by 2
   hls:
-    enabled: true
+    enabled: false
 
 live:
   enabled: true
@@ -296,11 +296,11 @@ live:
 
   # Limit max number of live videos created on your instance
   # -1 == unlimited
-  max_instance_lives: -1
+  max_instance_lives: 20
 
   # Limit max number of live videos created by a user on your instance
   # -1 == unlimited
-  max_user_lives: 1
+  max_user_lives: 3
 
   # Allow your users to save a replay of their live
   # PeerTube will transcode segments in a video file
@@ -324,9 +324,9 @@ live:
 
     resolutions:
       240p: false
-      360p: true
-      480p: true
-      720p: true
+      360p: false
+      480p: false
+      720p: false
       1080p: false
       1440p: false
       2160p: false
@@ -335,10 +335,10 @@ import:
   # Add ability for your users to import remote videos (from YouTube, torrent...)
   videos:
     # Amount of import jobs to execute in parallel
-    concurrency: 2
+    concurrency: 1
 
     http: # Classic HTTP or all sites supported by youtube-dl https://rg3.github.io/youtube-dl/supportedsites.html
-      enabled: true
+      enabled: false
 
       # IPv6 is very strongly rate-limited on most sites supported by youtube-dl
       force_ipv4: false
@@ -358,9 +358,9 @@ auto_blacklist:
 
 # Instance settings
 instance:
-  name: 'Bastyon Video Server'
-  short_description: 'Video Server for a decentralized blockchain platform - bastyon.com'
-  description: 'Video Server for a decentralized blockchain platform - bastyon.com' # Support markdown
+  name: 'YunoHost PeerTube'
+  short_description: 'PeerTube, an ActivityPub-federated video streaming platform using P2P directly in your web browser.'
+  description: 'Welcome to this PeerTube instance!' # Support markdown
   terms: 'No terms for now.' # Support markdown
   code_of_conduct: '' # Supports markdown
 
@@ -482,7 +482,7 @@ search:
   # That means they will be able to follow channels, watch videos, list videos of non followed instances
   remote_uri:
     users: true
-    anonymous: true
+    anonymous: false
 
   # Use a third party index instead of your local index, only for search results
   # Useful to discover content outside of your instance
