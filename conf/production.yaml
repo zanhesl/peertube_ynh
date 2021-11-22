@@ -98,7 +98,7 @@ log:
   rotation:
     enabled : true # Enabled by default, if disabled make sure that 'storage.logs' is pointing to a folder handled by logrotate
     maxFileSize: 12MB
-    maxFiles: 20
+    maxFiles: 10
   anonymizeIP: false
   log_ping_requests: true
   prettify_sql: false
@@ -119,7 +119,7 @@ trending:
 # Once you have defined your strategies, choose which instances you want to cache in admin -> manage follows -> following
 redundancy:
   videos:
-    check_interval: '1 hour' # How often you want to check new videos to cache
+    check_interval: '5 minutes' # How often you want to check new videos to cache
     strategies: # Just uncomment strategies you want
 #      -
 #        size: '10GB'
@@ -132,7 +132,7 @@ redundancy:
 #        min_lifetime: '48 hours'
 #        strategy: 'trending' # Cache trending videos
 #      -
-        size: '10GB'
+        size: '256GB'
         # Minimum time the video must remain in the cache. Only accept values > 10 hours (to not overload remote instances)
         min_lifetime: '48 hours'
         strategy: 'recently-added' # Cache recently added videos
